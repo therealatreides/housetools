@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.themecontrol" version="0.0.1" name="Theme Control" provider-name="MuadDib">
+    <requires>
+        <import addon="xbmc.python" version="2.19.0"/>
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <summary>Theme Control Backend for Addons</summary>
+        <description>Backend helper for skinning addons with XML design instead of solely via python</description>
+        <disclaimer lang="en">The author is not responsible for your addon. The authoer is also not responsible for breaking your stuff. You have been warned.</disclaimer>
+        <license>Beerware rev. 42</license>
+        <platform>all</platform>
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+    </extension>
+</addon>

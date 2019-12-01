@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addons>
+    <addon id="repository.atreides.tools" name="House Atreides Tools" version="0.0.1" provider-name="MuadDib">
+        <requires>
+            <import addon="xbmc.addon" version="12.0.0"/>
+        </requires>
+        <extension point="xbmc.addon.repository" name="House Atreides Tools">
+            <info compressed="false">https://raw.githubusercontent.com/therealatreides/housetools/master/code/_housefiles/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/therealatreides/housetools/master/code/_housefiles/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/therealatreides/housetools/master/code/_housefiles/</datadir>
+            <hashes>false</hashes>
+        </extension>
+        <extension point="xbmc.addon.metadata">
+            <summary>House Atreides Official Tools Repository</summary>
+            <description>House Atreides Official Tools Repository</description>
+            <platform>all</platform>
+            <genre>usa</genre>
+        </extension>
+    </addon>
+
+<addon id="script.module.themecontrol" version="0.0.1" name="Theme Control" provider-name="MuadDib">
+    <requires>
+        <import addon="xbmc.python" version="2.19.0"/>
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <summary>Theme Control Backend for Addons</summary>
+        <description>Backend helper for skinning addons with XML design instead of solely via python</description>
+        <disclaimer lang="en">The author is not responsible for your addon. The authoer is also not responsible for breaking your stuff. You have been warned.</disclaimer>
+        <license>Beerware rev. 42</license>
+        <platform>all</platform>
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+    </extension>
+</addon>
+</addons>

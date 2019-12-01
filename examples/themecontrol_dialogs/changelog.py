@@ -12,6 +12,7 @@
 import os
 import re
 
+import xbmc
 import xbmcgui
 import xbmcaddon
 
@@ -45,7 +46,10 @@ def ChangelogViewer(cl_text=None):
             # This will set the text to display in the Textbox Control
             self.getControl(self.textbox_cl).setText(self.cl_text)
             # Adjust focus to the close button in the window displayed
-            self.setFocusId(self.btn_close)
+            self.setFocusId(self.getCurrentContainerId())
+            self.setFocus(self.getControl(self.btn_close))
+            xbmc.executebuiltin("Dialog.Close(busydialog)")
+
 
         def onClick(self, controlId):
             if controlId == self.btn_close:
