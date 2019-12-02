@@ -72,7 +72,9 @@ def OK_Dialog(title, msg):
         Note:
             The xml_path folder is where the xmls is located. You could technically have one for 720p, one for 1080i, etc. then in your
             dialog code check the Kodi resolution being used and load different xmls based on that.
+
+            ** Using the folder name of 'xml' in Kodi 17 makes it look at the Skin for Kodi itself, ignoring the module.
     '''
-    ok = OK_Box('Dialog_OK.xml', themecontrol.getThemeModulePath(), themecontrol.getThemeRootPath(), 'xml', title=title, msg=msg)
+    ok = OK_Box('Dialog_OK.xml', themecontrol.getThemeModulePath(), themecontrol.getCurrentTheme(), '1080i', title=title, msg=msg)
     ok.doModal()
     del ok

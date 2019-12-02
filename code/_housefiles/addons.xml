@@ -18,11 +18,11 @@
         </extension>
     </addon>
 
-<addon id="script.module.themecontrol" version="0.0.1" name="Theme Control" provider-name="MuadDib">
+<addon id="script.module.themecontrol" version="0.0.1a" name="Theme Control" provider-name="MuadDib">
     <requires>
         <import addon="xbmc.python" version="2.19.0"/>
     </requires>
-    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.python.module" library="themelib" />
     <extension point="xbmc.addon.metadata">
         <summary>Theme Control Backend for Addons</summary>
         <description>Backend helper for skinning addons with XML design instead of solely via python</description>

@@ -1,7 +1,7 @@
 Requirements (In Your Addon):
     Settings.xml:
         - notifyvoice: This setting is for secondary sounds
-        - theme: This setting should have matches to the folders in resources/skins/
+        - theme.control: This setting should have matches to the folders in resources/skins/
             Example: resources/skins/main
                      resources/skins/alternate
     Resources Folder Structure:

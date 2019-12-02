@@ -16,7 +16,8 @@ import xbmc
 import xbmcgui
 import xbmcaddon
 
-from themelib import themecontrol, tools
+import themecontrol
+import themetools
 
 addon = xbmcaddon.Addon()
 
@@ -66,7 +67,9 @@ def ChangelogViewer(cl_text=None):
         Note:
             The xml_path folder is where the xmls is located. You could technically have one for 720p, one for 1080i, etc. then in your
             dialog code check the Kodi resolution being used and load different xmls based on that.
+
+            ** Using the folder name of 'xml' in Kodi 17 makes it look at the Skin for Kodi itself, ignoring the module.
     '''
-    viewer = Changelog_Window('Changelog.xml', themecontrol.getThemeModulePath(), themecontrol.getThemeRootPath(), 'xml', cl_text=cl_text)
+    viewer = Changelog_Window('Changelog.xml', themecontrol.getThemeModulePath(), themecontrol.getCurrentTheme(), '1080i', cl_text=cl_text)
     viewer.doModal()
     del viewer

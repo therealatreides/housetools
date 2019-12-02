@@ -38,8 +38,8 @@ addon = xbmcaddon.Addon()
 
 class ThemeColors():
     def __init__(self):
-        self.colors()
         self.colorsPath = getThemeColorPath()
+        self.colors()
 
     def colors(self):
         tree = ET.parse(os.path.join(self.colorsPath, 'colors.xml'))
@@ -80,7 +80,7 @@ class ThemeSounds():
 
 
 def getCurrentTheme():
-    theme = addon.getSetting('theme').lower()
+    theme = addon.getSetting('theme.control').lower()
     if theme in ['-', '']:
         return
     else:

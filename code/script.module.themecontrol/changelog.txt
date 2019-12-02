@@ -1,0 +1,6 @@
+v0.0.2
+- Changed setting theme to theme.control
+  Jens evidentily have a setting that uses theme. Blah
+
+v0.0.1
+- Initial Release
