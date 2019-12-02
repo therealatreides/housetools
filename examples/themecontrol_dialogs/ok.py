@@ -16,7 +16,7 @@ import xbmc
 import xbmcgui
 import xbmcaddon
 
-from themelib import themecontrol
+import themecontrol
 
 addon = xbmcaddon.Addon()
 

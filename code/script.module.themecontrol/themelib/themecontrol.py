@@ -56,8 +56,8 @@ class ThemeColors():
 
 class ThemeSounds():
     def __init__(self):
-        self.sounds()
         self.soundPath = getThemeSoundPath()
+        self.sounds()
 
     def sounds(self):
         if addon.getSetting('notifyvoice') == 'true':
