@@ -38,8 +38,8 @@
                 <height>50</height>
 				<label>OK</label>
                 <align>center</align>
-				<texturefocus colordiffuse="$INFO[Window().Property(btnfocus)]" border="5">Buttons/btn_focus.png</texturefocus>
-                <texturenofocus>Buttons/btn_nofocus.png</texturenofocus>
+				<texturefocus colordiffuse="$INFO[Window().Property(btnfocus)]" border="5">Buttons/plainbtn_focus.png</texturefocus>
+                <texturenofocus>Buttons/pixel.png</texturenofocus>
 			</control>
 		</control>
 	</controls>

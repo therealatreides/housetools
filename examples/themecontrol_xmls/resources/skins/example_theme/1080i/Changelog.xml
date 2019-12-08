@@ -91,7 +91,7 @@
                     <label>Close</label>
                     <align>center</align>
                     <aligny>center</aligny>
-                    <texturefocus colordiffuse="$VAR[HighlightBarColor]">Buttons/plainbtn_focus.png</texturefocus>
+                    <texturefocus colordiffuse="$INFO[Window().Property(btnfocus)]" border="5">Buttons/plainbtn_focus.png</texturefocus>
                     <texturenofocus>Buttons/pixel.png</texturenofocus>
                     <onup>105</onup>
                     <ondown>105</ondown>
