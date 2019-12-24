@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="program.themecontrol.example" version="0.0.1" name="TC Example" provider-name="MuadDib">
+    <requires>
+        <import addon="xbmc.python" version="2.19.0"/>
+        <import addon="script.module.themecontrol"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Addon to show examples of the various Dialog/Window examples using Theme Control</summary>
+        <description>This addon is an example addon that showcases example dialogs and windows using the Theme Control skin helper for addons.[CR]</description>
+        <disclaimer lang="en">This addon doesn't do anything except show you the example dialogs.</disclaimer>
+        <license>Beerware rev. 42</license>
+        <platform>all</platform>
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+    </extension>
+</addon>

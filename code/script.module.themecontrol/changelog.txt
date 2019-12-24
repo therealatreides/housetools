@@ -1,3 +1,6 @@
+v0.0.2a
+- Cleanup
+
 v0.0.2
 - Changed setting theme to theme.control
   Jens evidentily have a setting that uses theme. Blah

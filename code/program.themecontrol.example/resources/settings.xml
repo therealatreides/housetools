@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <!-- General -->
+    <category label="General">
+        <setting id="notifyvoice" type="bool" label="Voice Notifications" default="false" />
+        <setting id="theme.control" type="select" label="Theme Title" values="example_theme" default="example_theme" visible="false" />
+    </category>
+</settings>
+

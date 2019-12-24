@@ -10,10 +10,10 @@
 
 '''
 2019/11/30: Work Started
+2019/12/24: Cleanup
 '''
 
 import os
-import requests
 import xml.etree.ElementTree as ET
 
 import xbmcaddon
