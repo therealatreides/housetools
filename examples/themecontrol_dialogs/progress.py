@@ -17,103 +17,98 @@ other code can run along side it like core
 
 import os
 import re
+
+import themecontrol
+import xbmc
+import xbmcaddon
+import xbmcgui
+
 try:
     from threading import Thread
 except ImportError:
     from dummy_threading import Thread
 
-import xbmc
-import xbmcgui
-import xbmcaddon
-
-import themecontrol
 
 addon = xbmcaddon.Addon()
 
 
 '''
 Example on how to call the Progress Dialog from within your addon
-    from path.to.the.changelog.python.file import progress
-    progress.Progress_Dialog(title='My Progress Window', msg='Click the button to close the OK window')
+    from path.to.the.progress.python.file import progress
+    dialog = progress.Progress_Dialog()
+    dialog.create('My Title', 'This is my message for it')
 
-Note** You will want to run progress windows in threads so that the script can continue to run after calling it.
-    Calling progress updates will work as normal if the progress control is in the window.
+Note** This is still a Work in Progress. Not suitable for use, as progress not
+    increasing as of yet. Something I am overlooking or too dumb to see.
 '''
 class Progress_Dialog():
-    def __init__(self):
-        pass
+    def close(self):
+        self.progress.close()
 
     def create(self, title, msg):
-        self.cprog = self.Progress_Box('Dialog_Progress.xml', themecontrol.getThemeModulePath(), themecontrol.getCurrentTheme(), '1080i', title=title, msg=msg)
-        self.cprog.doModal()
-        ret = self.cprog.getProperty('btnret')
-        del self.cprog
-        '''
-        In the XML, we use the onclick entity to set the btnret property 'true' so we can know if Cancel was pressed.
+        self.progress = Progress_Box('Dialog_Progress.xml', themecontrol.getThemeModulePath(), themecontrol.getCurrentTheme(), '1080i')
+        self.progress.show()
+        self.progress.create(title, msg)
 
-        We do this, so scripts can handle specific checks based on if the dialog was cancelled or allowed to complete.
-        '''
+    '''
+    This is used to see if the dialog is closed
+    '''
+    def iscancelled(self):
+        ret = self.progress.getProperty('btnret')
         if ret == 'true':
-            return False
-        else:
             return True
+        else:
+            return False
 
-    class Progress_Box(xbmcgui.WindowXMLDialog):
-        # until now we have a blank window, the onInit function will parse your xml file
-        def onInit(self):
-            self.colors = themecontrol.ThemeColors()
+    def update(self, percentage, msg=None):
+        self.progress.update(percentage, msg)
 
-            # Title/Header Label's ID from the XML
-            self.lbl_title = 1
-            # Textbox control's ID from the XML for the "message"
-            self.tbox_body = 2
-            # Cancel button control's ID from the XML
-            self.btn_cancel = 5
+'''
+Due to the XML Interaction for skins using onInit and outter functions not being
+able to access self.attributes like onClick() and other internal XML Window functions
+we need to set up globals within the class to handle this. Dirty dirty little duck
+'''
+class Progress_Box(xbmcgui.WindowXMLDialog):
+    colors = themecontrol.ThemeColors()
+    lbl_title = 1
+    tbox_body = 2
+    btn_cancel = 5
+    cntrl_progress = 10
 
-            # Set the Title Label's text
-            self.getControl(self.lbl_title).setLabel(title)
-            # Set the Text for the Textbox next
+    # until now we have a blank window, the onInit function will parse your xml file
+    def onInit(self):
+        xbmc.sleep(100)
+
+    def create(self, title='Progress', msg=''):
+        # Example XML uses properties for the color of text, so we add it now
+        self.setProperty('dhtext', self.colors.dh_color)
+        # We add another Property that the XML uses for adjusting the Button on focus
+        self.setProperty('btnfocus', self.colors.btn_focus)
+        # Set the Title Label's text
+        self.getControl(self.lbl_title).setLabel(title)
+        # Set the Text for the Textbox next
+        self.getControl(self.tbox_body).setText(msg)
+        # this puts the focus on the top item of the container
+        self.setFocusId(self.getCurrentContainerId())
+        self.setFocus(self.getControl(self.btn_cancel))
+        # Kill any busy dialog that may be open and we are done
+        xbmc.executebuiltin("Dialog.Close(busydialog)")
+
+    def update(self, percentage, msg):
+        # Set the Percentage passed
+        xbmcgui.Dialog().textviewer('HI', str(self.getControl(self.cntrl_progress).getPercent()))
+        self.getControl(self.cntrl_progress).setPercent(percentage)
+        # Set the Text for the Textbox next
+        if not msg is None:
             self.getControl(self.tbox_body).setText(msg)
-            # Example XML uses properties for the color of text, so we add it now
-            self.setProperty('dhtext', self.colors.dh_color)
-            # We add another Property that the XML uses for adjusting the Button on focus
-            self.setProperty('btnfocus', self.colors.btn_focus)
 
-            xbmc.sleep(100)
-            # this puts the focus on the top item of the container
-            self.setFocusId(self.getCurrentContainerId())
-            self.setFocus(self.getControl(self.btn_cancel))
-            # Kill any busy dialog that may be open and we are done
-            xbmc.executebuiltin("Dialog.Close(busydialog)")
+    def onClick(self, controlId):
+        # If the control clicked is the Cancel Button, close out the window and handle the cancel
+        if (controlId == self.btn_cancel):
+            self.close()
 
-        def onClick(self, controlId):
-            # If the control clicked is the Cancel Button, close out the window and handle the cancel
-            if (controlId == self.btn_cancel):
-                self.close()
-
-        def onAction(self, action):
-            # Actions checked here are the previous menu and navigation back in order to close the
-            # window from Back buttons, escape, etc.
-            if action == themecontrol.ACTION_PREVIOUS_MENU or action == themecontrol.ACTION_NAV_BACK:
-                self.close()
-
-
-'''
-Class borrowed from Jen core. All credit to original developer
-'''
-class threadWithReturn(Thread):
-    def __init__(self, *args, **kwargs):
-        super(threadWithReturn, self).__init__(*args, **kwargs)
-
-        self._return = None
-
-    def run(self):
-        if self._Thread__target is not None:
-            self._return = self._Thread__target(*self._Thread__args,
-                                                **self._Thread__kwargs)
-
-    def join(self, *args, **kwargs):
-        super(threadWithReturn, self).join(*args, **kwargs)
-
-        return self._return
-
+    def onAction(self, action):
+        # Actions checked here are the previous menu and navigation back in order to close the
+        # window from Back buttons, escape, etc.
+        if action == themecontrol.ACTION_PREVIOUS_MENU or action == themecontrol.ACTION_NAV_BACK:
+            self.close()

@@ -31,22 +31,23 @@
 				<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
 			</control>
 			<control type="button" id="5">
-				<description>OK button</description>
+				<description>Cancel button</description>
 				<left>395</left>
 				<top>315</top>
                 <width>150</width>
                 <height>50</height>
-				<label>OK</label>
+				<label>Cancel</label>
                 <align>center</align>
 				<texturefocus colordiffuse="$INFO[Window().Property(btnfocus)]" border="5">Buttons/plainbtn_focus.png</texturefocus>
                 <texturenofocus>Buttons/pixel.png</texturenofocus>
     			<onclick>SetProperty(btnret, true)</onclick>
 			</control>
 			<control type="progress" id="10">
-				<left>395</left>
-				<top>315</top>
-                <width>150</width>
+				<left>13</left>
+				<top>280</top>
+				<width>890</width>
                 <height>24</height>
+				<midtexture border="2">osd/midtexture.png</midtexture>
 				<info>System.Progressbar</info>
 			</control>
 		</control>
