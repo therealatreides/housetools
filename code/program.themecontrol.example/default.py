@@ -13,6 +13,7 @@ import sys
 import urllib
 import urlparse
 
+import xbmcaddon
 import xbmcgui
 import xbmcplugin
 
@@ -24,39 +25,41 @@ params = dict(urlparse.parse_qsl(sys.argv[2].replace('?', '')))
 action = params.get('action')
 
 def mainmenu():
+        tIcon = xbmcaddon.Addon().getAddonInfo('icon')
+        tFanart =  xbmcaddon.Addon().getAddonInfo('fanart')
         url = sysaddon + '?action=showOK'
-        list_item = xbmcgui.ListItem('OK Dialog', iconImage="icon.png")
-        list_item.setArt({'fanart': 'fanart.jpg'})
+        list_item = xbmcgui.ListItem('OK Dialog', iconImage=tIcon)
+        list_item.setArt({'fanart': tFanart})
         list_item.setProperty('IsPlayable', 'false')
         xbmcplugin.addDirectoryItem(handle=syshandle, url=url, listitem=list_item, isFolder=False)
 
         url = sysaddon + '?action=showYesNo'
-        list_item = xbmcgui.ListItem('Yes/No Dialog', iconImage="icon.png")
-        list_item.setArt({'fanart': 'fanart.jpg'})
+        list_item = xbmcgui.ListItem('Yes/No Dialog', iconImage=tIcon)
+        list_item.setArt({'fanart': tFanart})
         list_item.setProperty('IsPlayable', 'false')
         xbmcplugin.addDirectoryItem(handle=syshandle, url=url, listitem=list_item, isFolder=False)
 
         url = sysaddon + '?action=showNInfo'
-        list_item = xbmcgui.ListItem('Info Notification Popup (Focused)', iconImage="icon.png")
-        list_item.setArt({'fanart': 'fanart.jpg'})
+        list_item = xbmcgui.ListItem('Info Notification Popup (Focused)', iconImage=tIcon)
+        list_item.setArt({'fanart': tFanart})
         list_item.setProperty('IsPlayable', 'false')
         xbmcplugin.addDirectoryItem(handle=syshandle, url=url, listitem=list_item, isFolder=False)
 
         url = sysaddon + '?action=showNWarning'
-        list_item = xbmcgui.ListItem('Warning Notification Popup (Focused)', iconImage="icon.png")
-        list_item.setArt({'fanart': 'fanart.jpg'})
+        list_item = xbmcgui.ListItem('Warning Notification Popup (Focused)', iconImage=tIcon)
+        list_item.setArt({'fanart': tFanart})
         list_item.setProperty('IsPlayable', 'false')
         xbmcplugin.addDirectoryItem(handle=syshandle, url=url, listitem=list_item, isFolder=False)
 
         url = sysaddon + '?action=showNError'
-        list_item = xbmcgui.ListItem('Error Notification Popup (Focused)', iconImage="icon.png")
-        list_item.setArt({'fanart': 'fanart.jpg'})
+        list_item = xbmcgui.ListItem('Error Notification Popup (Focused)', iconImage=tIcon)
+        list_item.setArt({'fanart': tFanart})
         list_item.setProperty('IsPlayable', 'false')
         xbmcplugin.addDirectoryItem(handle=syshandle, url=url, listitem=list_item, isFolder=False)
 
         url = sysaddon + '?action=showChanges'
-        list_item = xbmcgui.ListItem('Changelog Viewer', iconImage="icon.png")
-        list_item.setArt({'fanart': 'fanart.jpg'})
+        list_item = xbmcgui.ListItem('Changelog Viewer', iconImage=tIcon)
+        list_item.setArt({'fanart': tFanart})
         list_item.setProperty('IsPlayable', 'false')
         xbmcplugin.addDirectoryItem(handle=syshandle, url=url, listitem=list_item, isFolder=False)
 

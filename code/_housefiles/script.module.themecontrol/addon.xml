@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.module.themecontrol" version="0.0.1b" name="Theme Control" provider-name="MuadDib">
+<addon id="script.module.themecontrol" version="0.0.2a" name="Theme Control" provider-name="MuadDib">
     <requires>
         <import addon="xbmc.python" version="2.19.0"/>
+		<import addon="script.module.requests" />
     </requires>
     <extension point="xbmc.python.module" library="themelib" />
     <extension point="xbmc.addon.metadata">
