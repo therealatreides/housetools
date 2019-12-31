@@ -18,7 +18,7 @@
     </extension>
 </addon>
 
-<addon id="program.themecontrol.example" version="0.0.2" name="TC Example" provider-name="MuadDib">
+<addon id="program.themecontrol.example" version="0.0.3" name="TC Example" provider-name="MuadDib">
     <requires>
         <import addon="xbmc.python" version="2.19.0"/>
         <import addon="script.module.themecontrol"/>

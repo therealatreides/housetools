@@ -13,6 +13,7 @@ import sys
 import urllib
 import urlparse
 
+import xbmc
 import xbmcaddon
 import xbmcgui
 import xbmcplugin
@@ -29,6 +30,12 @@ def mainmenu():
         tFanart =  xbmcaddon.Addon().getAddonInfo('fanart')
         url = sysaddon + '?action=showOK'
         list_item = xbmcgui.ListItem('OK Dialog', iconImage=tIcon)
+        list_item.setArt({'fanart': tFanart})
+        list_item.setProperty('IsPlayable', 'false')
+        xbmcplugin.addDirectoryItem(handle=syshandle, url=url, listitem=list_item, isFolder=False)
+
+        url = sysaddon + '?action=showProgress'
+        list_item = xbmcgui.ListItem('Progress Dialog', iconImage=tIcon)
         list_item.setArt({'fanart': tFanart})
         list_item.setProperty('IsPlayable', 'false')
         xbmcplugin.addDirectoryItem(handle=syshandle, url=url, listitem=list_item, isFolder=False)
@@ -75,6 +82,22 @@ if action is None:
 elif action == 'showOK':
     from dialogs import ok
     ok.OK_Dialog(title='Example OK Window', msg='Click the button to close the OK window')
+elif action == 'showProgress':
+    from dialogs import progress
+    dialog = progress.Progress_Dialog()
+    dialog.create('My Title', 'This is my message for it')
+    xbmc.sleep(1000)
+    dialog.update(0.0, 'Get It Started at 0.....')
+    xbmc.sleep(1000)
+    dialog.update(25.0, '25 percent')
+    xbmc.sleep(1000)
+    dialog.update(35.0, '35 percent')
+    xbmc.sleep(1000)
+    dialog.update(55.0, '55 percent')
+    xbmc.sleep(1000)
+    dialog.update(75.0, '75 percent')
+    xbmc.sleep(1000)
+    dialog.update(100.0, '100 percent')
 elif action == 'showYesNo':
     from dialogs import yesno, ok
     ret = yesno.YN_Dialog(title='Example Yes/No Window', msg='Returns True for Yes, False for No')
