@@ -1,0 +1,2 @@
+1. Run for first time on PC as an Admin (Required to create Event Log Application Reference)
+2. Recommended to set up a Task in Task Scheduler to monitor for changes to Night Light and log to event viewer

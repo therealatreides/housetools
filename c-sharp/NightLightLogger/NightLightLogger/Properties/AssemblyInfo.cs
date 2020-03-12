@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NightLightSwitch")]
+[assembly: AssemblyTitle("NightLightLogger")]
 [assembly: AssemblyDescription("Turns Night Light in Windows 10 on and off with default settings")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NightLightSwitch")]
+[assembly: AssemblyProduct("NightLightLogger")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

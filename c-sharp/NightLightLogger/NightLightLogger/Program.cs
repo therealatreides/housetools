@@ -5,7 +5,7 @@ using Microsoft.Win32;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace NightLightSwitch
+namespace NightLightLogger
 {
     class Program
     {
