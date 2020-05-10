@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="program.fuck.indigo" version="0.0.1" name="Fuck Indigo" provider-name="MuadDib">
+<addon id="program.fuck.indigo" version="0.0.2" name="Fuck Indigo" provider-name="MuadDib">
     <requires>
         <import addon="xbmc.python" version="2.19.0"/>
     </requires>

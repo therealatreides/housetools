@@ -1,0 +1,5 @@
+1. Review images to see if can shrink any without quality loss
+2. Expand Addon Browser to show more details while browing through folders maybe? Look like tv info
+   stuff below a smaller icon to the right like Info Icons does already (but make it default, with
+   List down left side instead of boring ass icons
+
