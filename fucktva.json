@@ -1,0 +1,12 @@
+{
+    "fuck_main": [
+        {
+            "title": "Indigo",
+            "id": "plugin.program.indigo",
+            "disable": "true",
+            "delete": "true",
+            "fuck": "true",
+            "reason": "Forced on users without their approval via URL Resovler and it's repo"
+        }
+    ]
+}
